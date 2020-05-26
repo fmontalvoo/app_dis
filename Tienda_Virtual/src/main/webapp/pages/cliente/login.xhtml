@@ -1,0 +1,62 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Inicio Sesión</title>
+	<link rel="stylesheet" type="text/css"
+		href="../../assets/css/style.css" media="screen" />
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+	<link rel="stylesheet"
+		href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" />
+</h:head>
+<h:body id="body">
+	<div id="container" class="container">
+		<div class="d-flex justify-content-center h-100">
+			<div class="card">
+				<div class="card-header">
+					<h3>Inicio Sesión</h3>
+				</div>
+				<div class="card-body">
+					<h:form>
+						<h:messages globalOnly="true" />
+						<h:outputLabel class="etiqueta" value="Usuario:" />
+						<div class="input-group form-group">
+
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-user"></i></span>
+							</div>
+							<h:inputText type="email" class="form-control"
+								value="#{loginBean.usuario.email}" id="txtUser" />
+							<h:message for="txtUser" />
+
+						</div>
+						<h:outputLabel class="etiqueta" value="Clave:" />
+						<div class="input-group form-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-key"></i></span>
+							</div>
+							<h:inputSecret type="password" class="form-control"
+								value="#{loginBean.usuario.clave}" id="txtClave" />
+							<h:message for="txtClave" />
+						</div>
+						<div class="form-group">
+							<h:commandButton value="Login" class="float-right login_btn"
+								action="#{loginBean.login()}" />
+						</div>
+					</h:form>
+				</div>
+				<div class="card-footer">
+					<div class="d-flex justify-content-center">
+						<a href="#">¿Olvidaste tu contraseña?</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</h:body>
+</html>

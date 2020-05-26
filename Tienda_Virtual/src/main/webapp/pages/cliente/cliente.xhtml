@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition template="/pages/index.xhtml">
+	<h:head>
+		<f:metadata>
+			<f:viewParam name="codigo" value="#{clienteBean.codigo}" />
+			<f:viewAction action="#{clienteBean.cargarDatosCliente()}" />
+		</f:metadata>
+	</h:head>
+	<body>
+		<ui:define name="contenido">
+			<div id="container3" class="container3">
+				<div class="d-flex justify-content-center h-100">
+					<div class="card3">
+						<div class="card-body">
+							<h:form>
+								<ui:define name="contenido"></ui:define>
+								<!--FORMULARIO -->
+								<div class="input-group form-group">
+									<div>
+										<h:outputLabel class="etiqueta" value="Cedula:" />
+										<h:inputText class="form-control"
+											value="#{clienteBean.cliente.cedula}" id="txtCedula" />
+										<h:message for="txtCedula" />
+									</div>
+									&nbsp;
+									<div>
+										<h:outputLabel class="etiqueta" value="Nombres:" />
+										<h:inputText class="form-control"
+											value="#{clienteBean.cliente.nombres}" id="txtNombres" />
+										<h:message for="txtNombres" />
+									</div>
+								</div>
+								<div class="input-group form-group">
+									<div>
+										<h:outputLabel class="etiqueta" value="Apellidos:" />
+										<h:inputText class="form-control"
+											value="#{clienteBean.cliente.apellidos}" id="txtApellidos" />
+										<h:message for="txtApellidos" />
+									</div>
+									&nbsp;
+									<div>
+										<h:outputLabel class="etiqueta" value="Email:" />
+										<h:inputText class="form-control"
+											value="#{clienteBean.cliente.email}" id="txtEmail" />
+										<h:message for="txtEmail" />
+									</div>
+								</div>
+								<div class="input-group form-group">
+									<div>
+										<h:outputLabel class="etiqueta" value="Contraseña:" />
+										<h:inputText class="form-control"
+											value="#{clienteBean.cliente.clave}" id="txtClave" />
+										<h:message for="txtClave" />
+									</div>
+									&nbsp;
+									<div>
+										<h:outputLabel class="etiqueta" value="Fecha Nacimiento:" />
+										<h:inputText class="form-control"
+											value="#{clienteBean.cliente.fechaNacimiento}" id="txtFecha">
+											<f:convertDateTime pattern="dd/MM/yyyy" />
+										</h:inputText>
+										<h:message for="txtFecha" />
+									</div>
+								</div>
+								<div class="input-group form-group">
+									<div>
+										<h:outputLabel class="etiqueta" value="Teléfono:" />
+										<h:inputText class="form-control" value="#{clienteBean.cliente.telefono}"
+											id="txtTelefono" />
+										<h:message for="txtTelefono" />
+									</div>
+									&nbsp;
+									<div>
+										<h:outputLabel class="etiqueta" value="Ubicación:" />
+
+										<h:selectOneMenu id="cbxUbicacion"
+											 class="form-control" value="#{clienteBean.codigoDireccion}">
+											<f:selectItems value="#{clienteBean.direcciones}"
+												var="direccion" itemLabel="#{direccion.nombre}"
+												itemValue="#{direccion.codigo}" />
+										</h:selectOneMenu>
+									</div>
+								</div>
+								
+								<h:outputLabel class="etiqueta" value="Dirección:" />
+								<div class="input-group-prepend">
+								<h:inputText class="form-control" value="#{clienteBean.cliente.direccion}"
+									id="txtDireccion" />
+								<h:message for="txtDireccion" />
+								</div>
+								<br/>
+								<div class="form-group">
+								<h:inputHidden value="#{clienteBean.editing}" />
+								<h:commandButton class="float-left cliente_btn2"
+									action="#{clienteBean.guardar()}" value="Registrar" />
+								<h:commandButton class="float-right cliente_btn2"
+									action="#{clienteBean.listar()}" value="Listar" />
+								</div>
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ui:define>
+	</body>
+</ui:composition>
+</html>

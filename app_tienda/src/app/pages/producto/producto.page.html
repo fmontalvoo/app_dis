@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <img src="data:image/jpeg;base64,{{producto.imagen}}" />
+    <ion-card-header>
+      <ion-card-subtitle>{{producto.precio}}</ion-card-subtitle>
+      <ion-card-title>{{producto.nombre}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{producto.descripcion}}
+    </ion-card-content>
+
+    <ion-icon name="remove-circle" (click)="decrement()" style="font-size: 32px;"></ion-icon>
+    {{ cantidad }}
+    <ion-icon name="add-circle" (click)="increment()" style="font-size: 32px;"></ion-icon>
+    <br />
+    <br />
+    <ion-button name="" (click)="votar()">
+      <ion-icon name="thumbs-up" style="font-size: 32px;"></ion-icon>
+    </ion-button>
+    <ion-button (click)="agregarCarrito()">
+      <ion-icon name="cart" style="font-size: 32px;"></ion-icon>
+    </ion-button>
+
+  </ion-card>
+</ion-content>

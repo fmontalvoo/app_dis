@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/pages/index.xhtml">
+	<h:head>
+		<f:metadata>
+			<f:viewParam name="codigo" value="#{categoriaBean.codigo}" />
+			<f:viewAction action="#{categoriaBean.loadDataCategorias()}" />
+		</f:metadata>
+	</h:head>
+	<body>
+		<ui:define name="contenido">
+			<div id="container2" class="container1">
+			<div class="d-flex justify-content-center h-100">
+			<div class="card2">
+			<div class="card-body">
+			<h:form>
+				<h:outputLabel class="etiqueta" value="Nombre de Categoria:" />
+				<div class="input-group-prepend">
+				<h:inputText type="text" class="form-control" value="#{categoriaBean.categoria.nombre}"
+					id="txtNombreCategoria" />
+				<h:message for="txtNombreCategoria" />
+				</div>
+				<br />
+				<div class="form-group">
+				<h:inputHidden value="#{categoriaBean.editing}" />
+				<h:commandButton class="float-left login_btn2"
+					action="#{categoriaBean.guardar()}" value="Registrar" />
+				<h:commandButton class="float-right login_btn2"
+					action="#{categoriaBean.listar()}" value="Listar" />
+				</div>
+			</h:form>
+			</div>
+			</div>
+			</div>
+			</div>
+		</ui:define>
+	</body>
+</ui:composition>
+</html>

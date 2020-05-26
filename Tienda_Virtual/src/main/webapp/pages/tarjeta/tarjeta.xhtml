@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition template="/pages/index.xhtml">
+	<h:head>
+		<f:metadata>
+			<f:viewParam name="codigo" value="#{tarjetaBean.codigo}" />
+			<f:viewAction action="#{tarjetaBean.loadDataTarjeta()}" />
+		</f:metadata>
+	</h:head>
+	<body>
+		<ui:define name="contenido">
+		<div id="container7" class="container7">
+				<div class="d-flex justify-content-center h-100">
+					<div class="card7">
+					<div class="card-body">
+			<h:form>
+			   <div class="input-group-prepend">
+				<h:outputLabel class="etiqueta" value="Cedula:" />
+				&nbsp;
+				<h:inputText  class="form-control" value="#{tarjetaBean.cliente.cedula}" id="txtCedula" />
+				<h:message for="txtCedula" />
+				&nbsp;
+				<h:commandButton class="float-right login_btn2"
+					action="#{tarjetaBean.consultarCliente()}" value="Consultar" />
+				</div>
+				<br />
+				<h:dataTable   var="_cliente" value="#{tarjetaBean.cliente}"
+					styleClass="simpletablestyle" border="1">
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla"> Codigo </a></f:facet>
+               <a id="cabeceratabla"> #{_cliente.codigo}</a>
+            </h:column>
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Nombres</a></f:facet>
+               <a id="cabeceratabla"> #{_cliente.nombres}</a>
+            </h:column>
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Apellidos</a></f:facet>
+               <a id="cabeceratabla"> #{_cliente.apellidos}</a>
+            </h:column>
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Email</a></f:facet>
+                <a id="cabeceratabla">#{_cliente.email}</a>
+            </h:column>
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Dirección</a></f:facet>
+               <a id="cabeceratabla"> #{_cliente.direccion}</a>
+            </h:column>
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Teléfono</a></f:facet>
+               <a id="cabeceratabla"> #{_cliente.telefono}</a>
+            </h:column>
+
+				</h:dataTable>
+				<br />
+			</h:form>
+
+			<h:form>
+
+				<h:outputLabel class="etiqueta" value="Numero Tarjeta:" />
+				<div class="input-group-prepend">
+				<h:inputText class="form-control" value="#{tarjetaBean.tarjeta.numeroTarjeta}"
+					id="txtNumTarjeta" />
+				<h:message for="txtNumTarjeta" />
+				</div>
+				<h:outputLabel class="etiqueta" value="Fecha Expiracion:" />
+				<div class="input-group-prepend">
+				<h:inputText class="form-control" value="#{tarjetaBean.tarjeta.fechaExpiracion}"
+					id="txtFechaExp">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</h:inputText>
+				<h:message for="txtFechaExp" />
+				</div>
+				<h:outputLabel class="etiqueta" value="Codigo Seguridad:" />
+				<div class="input-group-prepend">
+				<h:inputText class="form-control" value="#{tarjetaBean.tarjeta.codigoSeguridad}"
+					id="txtCodSeguridad" />
+				<h:message for="txtCodSeguridad" />
+				</div>
+				<br />
+
+				<h:commandButton class="float-right login_btn2"
+					action="#{tarjetaBean.guardar()}" value="Guardar"></h:commandButton>
+			</h:form>
+			</div>
+			</div>
+			</div>
+			</div>
+		</ui:define>
+	</body>
+</ui:composition>
+</html>

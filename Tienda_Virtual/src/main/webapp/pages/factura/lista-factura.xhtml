@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition template="/pages/index.xhtml">
+	<h:head></h:head>
+	<body>
+		<ui:define name="contenido">
+			<h:form>
+				<div class="input-group-prepend">
+					<h:outputLabel class="etiqueta" value="Cedula:" />
+					&nbsp;
+					<h:inputText class="form-control"
+						value="#{facturaBean.cedula}" id="txtCedula" />
+					<h:message for="txtCedula" />
+					&nbsp;
+					<h:commandButton class="float-right login_btn2"
+						action="#{facturaBean.listarFacturas()}" value="Consultar" />
+				</div>
+				<br />
+				<!-- 		TABLA -->
+				<h:dataTable var="_factura" value="#{facturaBean.facturas}"
+					styleClass="table">
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Codigo</a></f:facet>
+                <a id="cabeceratabla">#{_factura.codigo}</a>
+            </h:column>
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Fecha</a></f:facet>
+                <a id="cabeceratabla">#{_factura.fecha}</a>
+            </h:column>
+
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Subtotal</a></f:facet>
+                <a id="cabeceratabla">#{_factura.subtotal}</a>
+            </h:column>
+
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">IVA</a></f:facet>
+                <a id="cabeceratabla">#{_factura.iva}</a>
+            </h:column>
+
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Total</a></f:facet>
+                <a id="cabeceratabla">#{_factura.total}</a>
+            </h:column>
+
+
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Acciones</a></f:facet>
+						<h:commandButton class="listar_btn4"
+							action="#{facturaBean.detalle(_factura)}" value="Detalle" />
+
+					</h:column>
+				</h:dataTable>
+				<br />
+
+			</h:form>
+		</ui:define>
+	</body>
+</ui:composition>
+</html>

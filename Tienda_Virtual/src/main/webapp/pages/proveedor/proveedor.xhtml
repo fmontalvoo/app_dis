@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/pages/index.xhtml">
+	<h:head>
+		<f:metadata>
+			<f:viewParam name="codigo" value="#{proveedorBean.codigo}" />
+			<f:viewAction action="#{proveedorBean.loadDataProveedores()}" />
+		</f:metadata>
+		<link rel="stylesheet" type="text/css"
+			href="../../assets/css/style1.css" media="screen" />
+	</h:head>
+	<body>
+		<ui:define name="contenido">
+			<div id="container1" class="container1">
+			<div class="d-flex justify-content-center h-100">
+			<div class="card1">
+			<div class="card-body">
+				<h:form>
+					<h:outputLabel class="etiqueta" value="RUC :" />
+					<div class="input-group-prepend">
+					<h:inputText type="text" class="form-control" value="#{proveedorBean.proveedor.ruc}"
+						id="txtRUCProveedor" />
+					<h:message for="txtRUCProveedor" />
+					</div>
+					<h:outputLabel class="etiqueta" value="Nombre de Proveedor:" />
+					<div class="input-group-prepend">
+					<h:inputText type="text" class="form-control" value="#{proveedorBean.proveedor.nombre}"
+						id="txtNombreProveedor" />
+					<h:message for="txtNombreProveedor" />
+					</div>
+					<h:outputLabel class="etiqueta" value="Direccion:" />
+					<div class="input-group-prepend">
+					<h:inputText type="text" class="form-control" value="#{proveedorBean.proveedor.direccion}"
+						id="txtDireccionProveedor" />
+					<h:message for="txtDireccionProveedor" />
+					</div>
+					<h:outputLabel class="etiqueta" value="Telefono:" />
+					<div class="input-group-prepend">
+					<h:inputText type="text" class="form-control" value="#{proveedorBean.proveedor.telefono}"
+						id="txtTelefonoProveedor" />
+					<h:message for="txtTelefonoProveedor" />
+					</div>
+					<h:outputLabel class="etiqueta" value="Email:" />
+					<div class="input-group-prepend">
+					<h:inputText type="email" class="form-control" value="#{proveedorBean.proveedor.email}"
+						id="txtEmailProveedor" />
+					<h:message for="txtEmailProveedor" />
+					</div>
+					<br />
+					<div class="form-group">
+					<h:inputHidden value="#{proveedorBean.editing}" />
+					<h:commandButton  class= "float-left login_btn2"
+						action="#{proveedorBean.guardar()}" value="Registrar"/>
+					&nbsp;
+					<h:commandButton  class= "float-right login_btn2"
+						action="#{proveedorBean.listar()}" value="Listar" />
+					</div>
+				</h:form>
+				</div>
+				</div>
+				</div>
+			</div>
+		</ui:define>
+	</body>
+</ui:composition>
+</html>

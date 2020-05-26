@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition template="/pages/index.xhtml">
+	<h:head></h:head>
+	<body>
+		<ui:define name="contenido">
+			<h:form>
+				<h:outputLabel class="etiqueta" value="Cedula:" />
+				&nbsp;
+				<h:inputText value="#{tarjetaBean.cliente.cedula}" id="txtCedula" />
+				<h:message for="txtCedula" />
+				&nbsp;
+				<h:commandButton class="listar_btn4" action="#{tarjetaBean.consultaTarjetasCliente}"
+					value="Consultar">
+					<f:ajax render="@form" execute="@form" />
+				</h:commandButton>
+				<br />
+
+				<h:dataTable var="_tarjeta" value="#{tarjetaBean.tarjetas}"
+					styleClass="table">
+
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Codigo</a></f:facet>
+                <a id="cabeceratabla">#{_tarjeta.codigo}</a>
+            </h:column>
+
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Numero Tarjeta</a></f:facet>
+                <a id="cabeceratabla">#{_tarjeta.numeroTarjeta}</a>
+            </h:column>
+
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Acciones</a></f:facet>
+						<h:commandButton class="listar_btn4"
+							action="#{tarjetaBean.editar(_tarjeta)}" value="Editar" />
+						<h:commandButton class="listar_btn4"
+							action="#{tarjetaBean.eliminar(_tarjeta)}" value="Eliminar" />
+					</h:column>
+
+				</h:dataTable>
+			</h:form>
+		</ui:define>
+	</body>
+</ui:composition>
+</html>

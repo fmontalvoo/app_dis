@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition template="/pages/index.xhtml">
+	<h:head>
+		<f:metadata>
+			<f:viewParam name="codigo" value="#{facturaBean.codigo}" />
+			<f:viewAction action="#{facturaBean.cargarDatosFactura()}" />
+		</f:metadata>
+	</h:head>
+	<body>
+		<ui:define name="contenido">
+			<div id="container8" class="container5">
+				<div class="card8">
+					<div class="card-body">
+						<h:form>
+							<!-- 		FORMULARIO -->
+									<div class="input-group form-group">
+									<div>
+									<h:outputLabel class="etiqueta" value="Fecha:" />
+									<h:inputText class="form-control" disabled="true"
+										value="#{facturaBean.factura.fecha}" id="txtFecha">
+										<f:convertDateTime pattern="dd/MM/yyyy" />
+									</h:inputText>
+									<h:message for="txtFecha" />
+									</div>
+									&nbsp;
+									<div>
+									<h:outputLabel class="etiqueta" value="Tarjeta:" />
+									<h:inputText class="form-control" disabled="true"
+										value="#{facturaBean.factura.tarjeta.numeroTarjeta}"
+										id="txtTarjeta">
+									</h:inputText>
+									<h:message for="txtTarjeta" />
+									</div>
+									</div>
+									<div class="input-group form-group">
+									<div>
+									<h:outputLabel class="etiqueta" value="Subtotal:" />
+									<h:inputText class="form-control" disabled="true"
+										value="#{facturaBean.factura.subtotal}" id="txtSubtotal">
+									</h:inputText>
+									<h:message for="txtSubtotal" />
+									</div>
+									&nbsp;
+									<div>
+									<h:outputLabel class="etiqueta" value="IVA:" />
+									<h:inputText class="form-control" disabled="true"
+										value="#{facturaBean.factura.iva}" id="txtIva">
+									</h:inputText>
+									<h:message for="txtIva" />
+									</div>
+									</div>
+									<h:outputLabel class="etiqueta" value="Total:" />
+									<h:inputText class="form-control" disabled="true"
+										value="#{facturaBean.factura.total}" id="txtTotal">
+									</h:inputText>
+									<h:message for="txtTotal" />
+						</h:form>
+					</div>
+				</div>
+			</div>
+			<br/>
+			<br/>
+			<br/>
+			<br/>
+			<div class="row">
+				<div class="col col-md-12">
+					<h3 class="etiqueta">Detalle Factura</h3>
+					<hr />
+					
+					<h:form>
+						<h:dataTable var="_detalle" value="#{facturaBean.detalles}"
+							styleClass="table">
+							<h:column>
+								<f:facet name="header">
+									<a id="cabeceratabla">Nombre</a>
+								</f:facet>
+								<a id="cabeceratabla">#{_detalle.producto.nombre}</a>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<a id="cabeceratabla">Descripción</a>
+								</f:facet>
+								<a id="cabeceratabla">#{_detalle.descripcion}</a>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<a id="cabeceratabla">Cantidad</a>
+								</f:facet>
+								<a id="cabeceratabla">#{_detalle.cantidad}</a>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<a id="cabeceratabla">Precio Unitario</a>
+								</f:facet>
+								<a id="cabeceratabla">#{_detalle.precioUnitario}</a>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<a id="cabeceratabla">Precio Total</a>
+								</f:facet>
+								<a id="cabeceratabla">#{_detalle.precioTotal}</a>
+							</h:column>
+						</h:dataTable>
+					</h:form>
+				</div>
+			</div>
+		</ui:define>
+	</body>
+</ui:composition>
+</html>

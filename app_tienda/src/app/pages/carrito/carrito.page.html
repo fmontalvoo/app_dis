@@ -1,0 +1,24 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Carrito</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let carrito of carritos">
+      <h2>{{carrito.producto.nombre}} | {{carrito.producto.precio}} | {{carrito.cantidad}} | {{carrito.producto.precio * carrito.cantidad}} | </h2>
+      <ion-button (click)="eliminar(carrito)">
+        <ion-icon name="trash" style="font-size: 32px;"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-list>
+  <ion-button  size="large" expand="block" [routerLink]="['/pago']">
+    <ion-icon name="cart" style="font-size: 32px;"></ion-icon>
+    Comprar
+  </ion-button>
+</ion-content>

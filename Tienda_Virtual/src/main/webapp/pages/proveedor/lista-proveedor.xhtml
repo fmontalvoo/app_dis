@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition template="/pages/index.xhtml">
+	<h:head></h:head>
+	<body>
+		<ui:define name="contenido">
+			<h:form>
+				<h:dataTable var="_proveedor" value="#{proveedorBean.proveedores}"
+					styleClass="table">
+
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Codigo</a></f:facet>
+               <a id="cabeceratabla"> #{_proveedor.codigo}</a>
+            </h:column>
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">RUC</a></f:facet>
+               <a id="cabeceratabla"> #{_proveedor.ruc}</a>
+            </h:column>
+
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Nombre</a></f:facet>
+               <a id="cabeceratabla"> #{_proveedor.nombre}</a>
+            </h:column>
+					<h:column>
+
+						<f:facet name="header"><a id="cabeceratabla">Direccion</a></f:facet>
+               <a id="cabeceratabla"> #{_proveedor.direccion}</a>
+            </h:column>
+
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Telefono</a></f:facet>
+               <a id="cabeceratabla"> #{_proveedor.telefono}</a>
+            </h:column>
+
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Email</a></f:facet>
+               <a id="cabeceratabla"> #{_proveedor.email}</a>
+            </h:column>
+
+					<h:column>
+						<f:facet name="header">><a id="cabeceratabla">Acciones</a></f:facet>
+						<h:commandButton class="listar_btn4"
+							action="#{proveedorBean.editar(_proveedor)}" value="Editar" />
+							 &nbsp;
+						<h:commandButton class="listar_btn4"
+							action="#{proveedorBean.eliminar(_proveedor)}" value="Eliminar" />
+					</h:column>
+				</h:dataTable>
+				<h:commandButton class="listar_btn3"
+					action="#{proveedorBean.crear()}" value="Regresar" />
+			</h:form>
+		</ui:define>
+	</body>
+</ui:composition>
+</html>

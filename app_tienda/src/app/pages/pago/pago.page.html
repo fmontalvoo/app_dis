@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>pago</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let tarjeta of tarjetas" (click)="seleccionarTarjeta(tarjeta)">
+      <h2>{{tarjeta.numeroTarjeta}}</h2>
+    </ion-item>
+  </ion-list>
+  <ion-button  size="large" expand="block" (click)="comprar()">
+    <ion-icon name="cart" style="font-size: 32px;"></ion-icon>
+    Comprar
+  </ion-button>
+</ion-content>

@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition template="/pages/index.xhtml">
+	<h:head>
+		<f:metadata>
+			<f:viewParam name="codigo" value="#{inventarioBean.codigo}" />
+			<f:viewAction action="#{inventarioBean.cargarDatosInventario()}" />
+		</f:metadata>
+	</h:head>
+	<body>
+		<ui:define name="contenido">
+			<div id="container5" class="container5">
+				<div class="card5">
+					<div class="card-body">
+						<h:form>
+							<!-- 		FORMULARIO -->
+							<div class="input-group form-group">
+								<div>
+									<h:outputLabel class="etiqueta" value="Fecha:" />
+									<h:inputText class="form-control"
+										value="#{inventarioBean.cabecera.fecha}" id="txtFecha">
+										<f:convertDateTime pattern="dd/MM/yyyy" />
+									</h:inputText>
+									<h:message for="txtFecha" />
+								</div>
+								&nbsp;
+								<div>
+									<h:outputLabel class="etiqueta" value="Descripción:" />
+									<h:inputTextarea class="form-control"
+										value="#{inventarioBean.cabecera.descripcion}"
+										id="txtDescripcion" />
+									<h:message for="txtDescripcion" />
+								</div>
+							</div>
+							<div class="form-group">
+								<h:inputHidden value="#{inventarioBean.editing}" />
+								<h:commandButton class="float-right cliente_btn2"
+									action="#{inventarioBean.guardar()}" value="Registrar" />
+							</div>
+						</h:form>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-md-6">
+					<h3 class="etiqueta">Productos</h3>
+					<div id="container4" class="container4">
+						<div class="card4">
+							<div class="card-body">
+								<h:form>
+									<div class="input-group form-group">
+										<div>
+											<ui:param name="cantidad"
+												value="#{inventarioBean.cantidadProducto}" />
+											<ui:param name="descripcion"
+												value="#{inventarioBean.descripcion}" />
+											<h:outputLabel class="etiqueta" value="Cantidad:" />
+											<h:inputText class="form-control"
+												value="#{inventarioBean.cantidadProducto}" id="txtCantidad" />
+											<h:message for="txtCantidad" />
+										</div>
+										&nbsp;
+										<div>
+											<h:outputLabel class="etiqueta" value="Descripción:" />
+											<h:inputTextarea class="form-control"
+												value="#{inventarioBean.descripcion}" id="txtDescripcion" />
+											<h:message for="txtDescripcion" />
+										</div>
+									</div>
+									<div class="input-group form-group">
+										<div>
+											<h:outputLabel class="etiqueta" value="Producto:" />
+											<h:inputText value="#{inventarioBean.nombreProducto}"
+												id="txtProducto" />
+											<h:message for="txtProducto" />
+										</div>
+										&nbsp;
+										<div>
+											<h:commandButton class="btn btn-outline-primary"
+												action="#{inventarioBean.listarProductos()}" value="Buscar">
+												<f:ajax render="@form" execute="@form" />
+											</h:commandButton>
+										</div>
+									</div>
+								</h:form>
+							</div>
+						</div>
+					</div>
+					<br /> <br /> <br />
+					<h:form>
+						<h:dataTable var="_producto" value="#{inventarioBean.productos}"
+							styleClass="table">
+							<h:column>
+								<f:facet name="header">
+									<a>Codigo</a>
+								</f:facet>
+								<a>#{_producto.codigo}</a>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<a>Nombre</a>
+								</f:facet>
+								<a>#{_producto.nombre}</a>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<a>Categoria</a>
+								</f:facet>
+								<a>#{_producto.categoria.nombre}</a>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<a>Acciones</a>
+								</f:facet>
+								<h:commandButton class="btn btn-outline-primary"
+									action="#{inventarioBean.agregarProducto(_producto, cantidad, descripcion)}"
+									value="Agregar" />
+							</h:column>
+						</h:dataTable>
+					</h:form>
+				</div>
+				<div class="col col-md-6">
+					<h3 class="etiqueta">Detalle Inventario</h3>
+					<hr />
+					<h:form>
+						<h:dataTable var="_detalle" value="#{inventarioBean.detalles}"
+							styleClass="table">
+							<h:column>
+								<f:facet name="header">
+									<a>Nombre</a>
+								</f:facet>
+								<a>#{_detalle.producto.nombre}</a>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<a>Descripción</a>
+								</f:facet>
+								<a>#{_detalle.descripcion}</a>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<a>Cantidad</a>
+								</f:facet>
+								<a>#{_detalle.stock}</a>
+							</h:column>
+						</h:dataTable>
+					</h:form>
+				</div>
+			</div>
+		</ui:define>
+	</body>
+</ui:composition>
+</html>

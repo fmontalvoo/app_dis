@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/pages/index.xhtml">
+	<h:head></h:head>
+	<body>
+		<ui:define name="contenido">
+			<h:form>
+				<h:outputLabel class="etiqueta" value="Producto:" />
+				&nbsp;
+				<h:inputText type="text" value="#{productoBean.nombre}" id="txtProducto" />
+				<h:message for="txtProducto" />
+				&nbsp;
+				<h:commandButton class="listar_btn4"
+					action="#{productoBean.listarProductos()}" value="Buscar">
+					<f:ajax render="@form" execute="@form" />
+				</h:commandButton>
+				<br />
+
+				<!-- 		TABLA -->
+				<h:dataTable var="_producto" value="#{productoBean.productos}"
+					styleClass="table">
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Codigo</a></f:facet>
+                <a id="cabeceratabla">#{_producto.codigo}</a>
+            </h:column>
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Nombre</a></f:facet>
+               <a id="cabeceratabla"> #{_producto.nombre}</a>
+            </h:column>
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Descripcion</a></f:facet>
+               <a id="cabeceratabla"> #{_producto.descripcion}</a>
+            </h:column>
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Categoria</a></f:facet>
+                <a id="cabeceratabla">#{_producto.categoria.nombre}</a>
+            </h:column>
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Proveedor</a></f:facet>
+               <a id="cabeceratabla"> #{_producto.proveedor.nombre}</a>
+            </h:column>
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Imagen</a></f:facet>
+				<a id="cabeceratabla">#{_producto.imagen}</a>
+			</h:column>
+
+					<h:column>
+						<f:facet name="header"><a id="cabeceratabla">Acciones</a></f:facet>
+						<h:commandButton class="listar_btn4"
+							action="#{productoBean.editar(_producto)}" value="Editar" />
+							 &nbsp;
+						<h:commandButton class="listar_btn4"
+							action="#{productoBean.eliminar(_producto)}" value="Eliminar" />
+					</h:column>
+				</h:dataTable>
+				<br />
+				<h:commandButton class="listar_btn3"
+					action="#{productoBean.crear()}" value="Regresar" />
+			</h:form>
+		</ui:define>
+	</body>
+</ui:composition>
+</html>

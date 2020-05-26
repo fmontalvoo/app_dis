@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<meta charset='utf-8' />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</h:head>
+<h:body id="body">
+	<ui:insert name="nav">
+		<nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> Categoria </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item"
+							href="http://localhost:8080/Tienda_Virtual/faces/pages/categoria/categoria.xhtml">Agregar
+							Categoria</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item"
+							href="http://localhost:8080/Tienda_Virtual/faces/pages/categoria/lista-categoria.xhtml">listar
+							Categoria</a>
+					</div></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> Cliente </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item"
+							href="http://localhost:8080/Tienda_Virtual/faces/pages/cliente/cliente.xhtml">Agregar
+							Cliente</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item"
+							href="http://localhost:8080/Tienda_Virtual/faces/pages/cliente/lista-cliente.xhtml">Listar
+							Cliente</a>
+					</div></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> Direccion </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item"
+							href="http://localhost:8080/Tienda_Virtual/faces/pages/direccion/direccion.xhtml">Agregar
+							Direccion</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item"
+							href="http://localhost:8080/Tienda_Virtual/faces/pages/direccion/lista-direccion.xhtml">Listar
+							Direcciones</a>
+					</div></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> Inventario </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item"
+							href="http://localhost:8080/Tienda_Virtual/faces/pages/inventario/inventario.xhtml">Agregar
+							Inventario</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item"
+							href="http://localhost:8080/Tienda_Virtual/faces/pages/inventario/lista-inventario.xhtml">Listar
+							Inventario</a>
+					</div></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> Producto </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item"
+							href="http://localhost:8080/Tienda_Virtual/faces/pages/producto/producto.xhtml">Agregar
+							Producto</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item"
+							href="http://localhost:8080/Tienda_Virtual/faces/pages/producto/lista-producto.xhtml">Listar
+							Productos</a>
+					</div></li>
+
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> Proveedor </a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item"
+							href="http://localhost:8080/Tienda_Virtual/faces/pages/proveedor/proveedor.xhtml">Agregar
+							Proveedor</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item"
+							href="http://localhost:8080/Tienda_Virtual/faces/pages/proveedor/lista-proveedor.xhtml">Listar
+							Provedores</a>
+					</div></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> Tarjeta Credito</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item"
+							href="http://localhost:8080/Tienda_Virtual/faces/pages/tarjeta/tarjeta.xhtml">Agregar
+							Tarjeta Credito</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item"
+							href="http://localhost:8080/Tienda_Virtual/faces/pages/tarjeta/lista-tarjeta.xhtml">Listar
+							Tarjetas Credito</a>
+					</div></li>
+
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">Voto</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item"
+							href="http://localhost:8080/Tienda_Virtual/faces/pages/voto/lista-voto.xhtml">
+							Listar Votos</a>
+							
+					</div></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false">Factura</a>
+					<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item"
+							href="http://localhost:8080/Tienda_Virtual/faces/pages/factura/lista-factura.xhtml">
+							Listar Factura</a>
+					</div></li>
+			</ul>
+		</div>
+		</nav>
+	</ui:insert>
+	<ui:insert name="contenido">
+	</ui:insert>
+	<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css"
+		href="../../assets/css/style.css" media="screen" />
+</h:body>
+</html>

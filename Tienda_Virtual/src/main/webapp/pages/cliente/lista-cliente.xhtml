@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<ui:composition template="/pages/index.xhtml">
+	<h:head></h:head>
+	<body>
+		<ui:define name="contenido">
+			<h:form>
+				<!-- 		TABLA -->
+				<h:dataTable var="_cliente" value="#{clienteBean.clientes}"
+					styleClass="table">
+					<h:column>
+						<f:facet name="header">
+							<a id="cabeceratabla">Codigo</a>
+						</f:facet>
+						<a id="cabeceratabla"> #{_cliente.codigo}</a>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<a id="cabeceratabla">Nombres</a>
+						</f:facet>
+						<a id="cabeceratabla"> #{_cliente.nombres}</a>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<a id="cabeceratabla">Apellidos</a>
+						</f:facet>
+						<a id="cabeceratabla"> #{_cliente.apellidos}</a>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<a id="cabeceratabla">Email</a>
+						</f:facet>
+						<a id="cabeceratabla">#{_cliente.email}</a>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<a id="cabeceratabla">Dirección</a>
+						</f:facet>
+						<a id="cabeceratabla"> #{_cliente.direccion}</a>
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<a id="cabeceratabla">Teléfono</a>
+						</f:facet>
+						<a id="cabeceratabla"> #{_cliente.telefono}</a>
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">
+							<a id="cabeceratabla">Acciones</a>
+						</f:facet>
+						<h:commandButton class="listar_btn4"
+							action="#{clienteBean.editar(_cliente)}" value="Editar" />
+							&nbsp;
+						<h:commandButton class="listar_btn4"
+							action="#{clienteBean.eliminar(_cliente)}" value="Eliminar" />
+					</h:column>
+				</h:dataTable>
+				<br />
+				<h:commandButton class="listar_btn3" action="#{clienteBean.crear()}"
+					value="Regresar" />
+			</h:form>
+		</ui:define>
+	</body>
+</ui:composition>
+</html>

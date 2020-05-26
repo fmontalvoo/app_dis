@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<ui:composition template="/pages/index.xhtml">
+	<h:head>
+		<f:metadata>
+			<f:viewParam name="codigo" value="#{productoBean.codigo}" />
+			<f:viewAction action="#{productoBean.cargarDatosProducto()}" />
+		</f:metadata>
+	</h:head>
+	<body>
+		<ui:define name="contenido">
+			<div id="container1" class="container1">
+				<div class="d-flex justify-content-center h-100">
+					<div class="card1">
+						<div class="card-body">
+							<h:form enctype="multipart/form-data">
+								<!-- 		FORMULARIO -->
+								<p:fileUpload class="etiqueta" value="#{productoBean.file}" mode="simple" />
+								<br />
+								<h:outputLabel class="etiqueta" value="Nombre:" />
+								<div class="input-group-prepend">
+								<h:inputText class="form-control" value="#{productoBean.producto.nombre}"
+									id="txtNombre" />
+								<h:message for="txtNombre" />
+								</div>
+								<h:outputLabel class="etiqueta" value="Descripción:" />
+								<div class="input-group-prepend">
+								<h:inputText class="form-control" value="#{productoBean.producto.descripcion}"
+									id="txtDescripcion" />
+								<h:message for="txtDescripcion" />
+								</div>
+								<h:outputLabel  class="etiqueta" value="Precio:" />
+								<div class="input-group-prepend">
+								<h:inputText class="form-control" value="#{productoBean.producto.precio}"
+									id="txtPrecio" />
+								<h:message for="txtPrecio" />
+								</div>
+								<h:outputLabel class="etiqueta" value="Categoria:" />
+								<div  class="input-group-prepend">
+								<h:selectOneMenu id="cbxCategoria"
+									value="#{productoBean.codigoCategoria}">
+									<f:selectItems value="#{productoBean.categorias}"
+										var="categoria" itemLabel="#{categoria.nombre}"
+										itemValue="#{categoria.codigo}" />
+								</h:selectOneMenu>
+								</div>
+								<h:outputLabel class="etiqueta" value="Proveedor:" />
+								<div class="input-group-prepend">
+								<h:selectOneMenu id="cbxProveedor"
+									value="#{productoBean.codigoProveedor}">
+									<f:selectItems value="#{productoBean.proveedores}"
+										var="proveedor" itemLabel="#{proveedor.nombre}"
+										itemValue="#{proveedor.codigo}" />
+								</h:selectOneMenu>
+								</div>
+								<br/>
+								<div class="form-group">
+								<h:inputHidden value="#{clienteBean.editing}" />
+								<h:commandButton class="float-left login_btn2"
+									action="#{productoBean.guardar()}" value="Registrar" />
+								&nbsp;
+								<h:commandButton class="float-right login_btn2"
+									action="#{productoBean.listar()}" value="Listar" />
+								</div>
+							</h:form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ui:define>
+	</body>
+</ui:composition>
+</html>
